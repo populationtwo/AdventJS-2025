@@ -1,6 +1,6 @@
 import filterGifts from "./filterGifts";
 
-describe('Challenge #01 - 🎄 Filter the defective gifts', () => {
+describe('Challenge #1: 🎁 Filter the defective gifts', () => {
 
   test('It returns [\'car\', \'ball\'] when it\'s called with [\'car\', \'doll#arm\', \'ball\', \'#train\']', () => {
 
