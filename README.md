@@ -1,5 +1,5 @@
 <div align="center">
-
+<img width="592" height="456" alt="image" src="https://github.com/user-attachments/assets/8cd0a2ee-7e6b-47e5-a16c-407b2599b511" />
 </div>
 
 # AdventJS 2025
