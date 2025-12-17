@@ -14,7 +14,6 @@ function decodeSantaPin(code: string): string | null {
         continue;
       }
       if (!firstChar) return null;
-      // console.log(firstChar)
       let num: number = Number(firstChar);
       for (const op of str.slice(1)) {
         if (op === '+') {
