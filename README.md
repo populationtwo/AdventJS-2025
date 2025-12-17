@@ -537,12 +537,12 @@ My solutions to [AdventJS](https://adventjs.dev/) 2025 challenges.
 </tr>
 
 <tr>
-  <td>22</td>
+  <td>24</td>
   <td>
     <strong></strong>
   </td>
   <td>
-    <a href="src/chapter-22/.ts">
+    <a href="src/chapter-24/.ts">
       <img
         src="https://img.shields.io/badge/Code-181717?logo=github&logoColor=fff&color=000"
         alt="gitHub code badge"
@@ -550,7 +550,7 @@ My solutions to [AdventJS](https://adventjs.dev/) 2025 challenges.
     </a>
   </td>
   <td>
-    <a href="src/chapter-22/.test.ts">
+    <a href="src/chapter-24/.test.ts">
       <img
         src="https://img.shields.io/badge/Tests-181717?logo=jest&logoColor=fff&color=000"
         alt="jest test badge"
