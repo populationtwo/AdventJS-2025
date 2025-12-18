@@ -201,10 +201,10 @@ My solutions to [AdventJS](https://adventjs.dev/) 2025 challenges.
 <tr>
   <td>09</td>
   <td>
-    <strong></strong>
+    <strong>  The reno robot aspirator</strong>
   </td>
   <td>
-    <a href="src/chapter-09/.ts">
+    <a href="src/chapter-09/moveReno.ts">
       <img
         src="https://img.shields.io/badge/Code-181717?logo=github&logoColor=fff&color=000"
         alt="gitHub code badge"
@@ -212,7 +212,7 @@ My solutions to [AdventJS](https://adventjs.dev/) 2025 challenges.
     </a>
   </td>
   <td>
-    <a href="src/chapter-09/.test.ts">
+    <a href="src/chapter-09/moveReno.test.ts">
       <img
         src="https://img.shields.io/badge/Tests-181717?logo=jest&logoColor=fff&color=000"
         alt="jest test badge"
@@ -224,10 +224,10 @@ My solutions to [AdventJS](https://adventjs.dev/) 2025 challenges.
 <tr>
   <td>10</td>
   <td>
-    <strong></strong>
+    <strong>📨 Depth of Christmas magic</strong>
   </td>
   <td>
-    <a href="src/chapter-10/.ts">
+    <a href="src/chapter-10/maxDepth.ts">
       <img
         src="https://img.shields.io/badge/Code-181717?logo=github&logoColor=fff&color=000"
         alt="gitHub code badge"
@@ -235,7 +235,7 @@ My solutions to [AdventJS](https://adventjs.dev/) 2025 challenges.
     </a>
   </td>
   <td>
-    <a href="src/chapter-10/.test.ts">
+    <a href="src/chapter-10/maxDepth.test.ts">
       <img
         src="https://img.shields.io/badge/Tests-181717?logo=jest&logoColor=fff&color=000"
         alt="jest test badge"
@@ -247,10 +247,10 @@ My solutions to [AdventJS](https://adventjs.dev/) 2025 challenges.
 <tr>
   <td>11</td>
   <td>
-    <strong></strong>
+    <strong>📹 Unwatched gifts</strong>
   </td>
   <td>
-    <a href="src/chapter-11/.ts">
+    <a href="src/chapter-11/findUnsafeGifts.ts">
       <img
         src="https://img.shields.io/badge/Code-181717?logo=github&logoColor=fff&color=000"
         alt="gitHub code badge"
@@ -258,7 +258,7 @@ My solutions to [AdventJS](https://adventjs.dev/) 2025 challenges.
     </a>
   </td>
   <td>
-    <a href="src/chapter-11/.test.ts">
+    <a href="src/chapter-11/findUnsafeGifts.test.ts">
       <img
         src="https://img.shields.io/badge/Tests-181717?logo=jest&logoColor=fff&color=000"
         alt="jest test badge"
@@ -270,10 +270,10 @@ My solutions to [AdventJS](https://adventjs.dev/) 2025 challenges.
 <tr>
   <td>12</td>
   <td>
-    <strong></strong>
+    <strong>⚔️ Elf battle</strong>
   </td>
   <td>
-    <a href="src/chapter-12/.ts">
+    <a href="src/chapter-12/elfBattle.ts">
       <img
         src="https://img.shields.io/badge/Code-181717?logo=github&logoColor=fff&color=000"
         alt="gitHub code badge"
@@ -281,7 +281,7 @@ My solutions to [AdventJS](https://adventjs.dev/) 2025 challenges.
     </a>
   </td>
   <td>
-    <a href="src/chapter-12/.test.ts">
+    <a href="src/chapter-12/elfBattle.test.ts">
       <img
         src="https://img.shields.io/badge/Tests-181717?logo=jest&logoColor=fff&color=000"
         alt="jest test badge"
@@ -293,10 +293,10 @@ My solutions to [AdventJS](https://adventjs.dev/) 2025 challenges.
 <tr>
   <td>13</td>
   <td>
-    <strong></strong>
+    <strong>🏭 The assembly line</strong>
   </td>
   <td>
-    <a href="src/chapter-13/.ts">
+    <a href="src/chapter-13/runFactory.ts">
       <img
         src="https://img.shields.io/badge/Code-181717?logo=github&logoColor=fff&color=000"
         alt="gitHub code badge"
@@ -304,7 +304,7 @@ My solutions to [AdventJS](https://adventjs.dev/) 2025 challenges.
     </a>
   </td>
   <td>
-    <a href="src/chapter-13/.test.ts">
+    <a href="src/chapter-13/runFactory.test.ts">
       <img
         src="https://img.shields.io/badge/Tests-181717?logo=jest&logoColor=fff&color=000"
         alt="jest test badge"
