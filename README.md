@@ -156,10 +156,10 @@ My solutions to [AdventJS](https://adventjs.dev/) 2025 challenges.
 <tr>
   <td>07</td>
   <td>
-    <strong></strong>
+    <strong>🎄 Decorating the tree</strong>
   </td>
   <td>
-    <a href="src/chapter-07/.ts">
+    <a href="src/chapter-07/drawTree.ts">
       <img
         src="https://img.shields.io/badge/Code-181717?logo=github&logoColor=fff&color=000"
         alt="gitHub code badge"
@@ -167,7 +167,7 @@ My solutions to [AdventJS](https://adventjs.dev/) 2025 challenges.
     </a>
   </td>
   <td>
-    <a href="src/chapter-07/.test.ts">
+    <a href="src/chapter-07/drawTree.test.ts">
       <img
         src="https://img.shields.io/badge/Tests-181717?logo=jest&logoColor=fff&color=000"
         alt="jest test badge"
@@ -179,10 +179,10 @@ My solutions to [AdventJS](https://adventjs.dev/) 2025 challenges.
 <tr>
   <td>08</td>
   <td>
-    <strong></strong>
+    <strong>🎁 Find the unique toy</strong>
   </td>
   <td>
-    <a href="src/chapter-08/.ts">
+    <a href="src/chapter-08/findUniqueToy.ts">
       <img
         src="https://img.shields.io/badge/Code-181717?logo=github&logoColor=fff&color=000"
         alt="gitHub code badge"
@@ -190,7 +190,7 @@ My solutions to [AdventJS](https://adventjs.dev/) 2025 challenges.
     </a>
   </td>
   <td>
-    <a href="src/chapter-08/.test.ts">
+    <a href="src/chapter-08/findUniqueToy.test.ts">
       <img
         src="https://img.shields.io/badge/Tests-181717?logo=jest&logoColor=fff&color=000"
         alt="jest test badge"
