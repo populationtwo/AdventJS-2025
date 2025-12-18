@@ -11,7 +11,7 @@ describe('Challenge #5: ⏱️ The countdown to take off', () => {
   test("It returns 0944 when it's called with 2025*12*25@00|00|00 NP", () => {
     const result = timeUntilTakeOff('2025*12*25@00|00|00 NP', takeoff);
     const expected = 0;
-    expect(result).toEqual(0);
+    expect(result).toEqual(expected);
   });
 
   test("It returns null when it's called with 2025*12*25@00|00|12 NP", () => {
