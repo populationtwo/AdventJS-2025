@@ -5,7 +5,6 @@ function runFactory(factory: Factory): Result {
   // Code here
   const matrix = factory.map((row) => row.split(''));
 
-  // console.log(matrix);
   let activeCoord = { x: 0, y: 0 };
   const visitedCell = new Set();
   visitedCell.add('0,0');
