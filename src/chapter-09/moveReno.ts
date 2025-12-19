@@ -3,73 +3,73 @@ type Moves = string;
 type Result = 'fail' | 'crash' | 'success';
 
 function moveReno(board: Board, moves: Moves): Result {
-  // Code here
-  let currentRow = 0;
-  let currentCol = 0;
-
-  let currentCoord = { x: 0, y: 0 };
-
   const moveMap: {
     [key: string]: {
       dy: number;
       dx: number;
     };
   } = {
-    U: { dy: -1, dx: 0 }, // Up: Decrease row index
-    D: { dy: 1, dx: 0 }, // Down: Increase row index
-    L: { dy: 0, dx: -1 }, // Left: Decrease column index
-    R: { dy: 0, dx: 1 }, // Right: Increase column index
-  };
+    U: { dy: -1, dx: 0 },
+    D: { dy: 1, dx: 0 },
+    L: { dy: 0, dx: -1 },
+    R: { dy: 0, dx: 1 },
+  } as const;
 
-  const parseBoard = (data: Board) => {
-    return data
-      .split('\n')
-      .map((row: string) => row.trim())
-      .filter((row: string) => row.length > 0)
-      .map((row) => row.split(''));
-  };
+  // Clean and parse board
+  const parsedBoard = board
+    .split('\n')
+    .map((row) => row.trim())
+    .filter(Boolean)
+    .map((row) => row.split(''));
 
-  const locateReindeer = (board: string[][]) => {
-    for (let i = 0; i < board.length; i++) {
-      for (let l = 0; l < board.length; l++) {
-        if (board[i][l] === '@') {
-          currentRow = i;
-          currentCol = l;
-        }
+  const boardHeight = parsedBoard.length;
+  const boardWidth = parsedBoard[0]?.length ?? 0;
+
+  // Find reindeer location
+  let startX = -1;
+  let startY = -1;
+
+  for (let y = 0; y < boardHeight; y++) {
+    for (let x = 0; x < parsedBoard[y].length; x++) {
+      if (parsedBoard[y][x] === '@') {
+        startX = x;
+        startY = y;
+        break;
       }
     }
-  };
-  locateReindeer(parseBoard(board));
-
-  let targetRow;
-  let targetCol;
-  let message;
-  console.log(currentRow);
-  console.log(currentCol);
-  for (const moveChar of moves) {
-    const { x, y } = currentCoord;
-
-    const direction = moveChar;
-
-    targetRow = y + moveMap[moveChar].dy;
-
-    targetCol = x + moveMap[moveChar].dx;
-
-    console.log('targetRow', targetRow);
-    console.log('targetCol', targetCol);
-    if (targetRow < 0 || targetCol < 0) return 'crash';
-
-    if (board[targetRow][targetCol] === '*') return 'success';
-
-    if (board[targetRow][targetCol] === '#') return 'crash';
-
-    if (board[targetRow][targetCol] === '.') {
-      currentCoord.x = targetCol;
-      currentCoord.y = targetRow;
-    }
-    // console.log('direction', direction);
+    if (startX !== -1) break;
   }
-  // console.log(parseBoard(board));
+
+  if (startX === -1) return 'fail'; // No reindeer found
+
+  let x = startX;
+  let y = startY;
+
+  for (const m of moves) {
+    const move = moveMap[m];
+    if (!move) continue; // Ignore invalid chars
+
+    const targetRow = y + move.dy;
+    const targetCol = x + move.dx;
+
+    // Out of bounds → crash
+    if (targetRow < 0 || targetCol < 0 || targetRow >= boardHeight || targetCol >= boardWidth) {
+      return 'crash';
+    }
+
+    const cell = parsedBoard[targetRow][targetCol];
+
+    if (cell === '*') return 'success';
+    if (cell === '#') return 'crash';
+
+    // Move only onto empty cells
+    if (cell === '.') {
+      x = targetCol;
+      y = targetRow;
+    }
+  }
+
+  return 'fail';
 }
 
 export default moveReno;
