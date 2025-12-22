@@ -1,26 +1,37 @@
 import drawGift from './drawGift';
 
 describe('Challenge #3: 👶 Help the intern', () => {
-  test('It returns  ****\n' + '*  *\n' + '*  *\n' + " **** when it's called with (4, '*')", () => {
-    const result = drawGift(4, '*');
-    const expected = '****\n' + '*  *\n' + '*  *\n' + '****';
-    expect(result).toEqual(expected);
-  });
-  test('It returns  ###\n' + '#  #\n' + " ### when it's called with (3, '#')", () => {
-    const result = drawGift(3, '#');
-    const expected = '###\n' + '# #\n' + '###';
-    expect(result).toEqual(expected);
-  });
+  describe('drawGift', () => {
+    test('size 4 with *', () => {
+      const result = drawGift(4, '*');
+      expect(result).toBe(
+        `****
+*  *
+*  *
+****`,
+      );
+    });
 
-  test('It returns  --\n' + "-- when it's called with (2, '-')", () => {
-    const result = drawGift(2, '-');
-    const expected = '--\n' + '--';
-    expect(result).toEqual(expected);
-  });
+    test('size 3 with #', () => {
+      const result = drawGift(3, '#');
+      expect(result).toBe(
+        `###
+# #
+###`,
+      );
+    });
 
-  test("It returns  \"\" when it's called with (1, '+')", () => {
-    const result = drawGift(1, '+');
-    const expected = '';
-    expect(result).toEqual(expected);
+    test('size 2 with -', () => {
+      const result = drawGift(2, '-');
+      expect(result).toBe(
+        `--
+--`,
+      );
+    });
+
+    test('size 1 with + returns empty string', () => {
+      const result = drawGift(1, '+');
+      expect(result).toBe('');
+    });
   });
 });
