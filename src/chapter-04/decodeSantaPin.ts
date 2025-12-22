@@ -1,34 +1,41 @@
 function decodeSantaPin(code: string): string | null {
-  const matches: string[] | null = code.match(/\[(.*?)]/g);
+  const matches = code.match(/\[(.*?)\]/g);
+  if (!matches) return null;
 
-  let results = '';
+  const results: string[] = [];
   let cacheLastNumber: number | null = null;
-  if (matches !== null) {
-    for (const str of matches.map((x) => x.slice(1, -1))) {
-      const firstChar: string = str[0];
 
-      if (firstChar === '<') {
-        if (cacheLastNumber !== null) {
-          results += cacheLastNumber.toString();
-        }
-        continue;
-      }
-      if (!firstChar) return null;
-      let num: number = Number(firstChar);
-      for (const op of str.slice(1)) {
-        if (op === '+') {
-          num = (num + 1) % 10; // wrap around 0–9
-        } else if (op === '-') {
-          num = (num + 9) % 10; // equivalent to num - 1 with wrap
-        }
-      }
+  for (const match of matches) {
+    const content = match.slice(1, -1);
 
-      cacheLastNumber = num;
-      results += num.toString();
+    if (content.length === 0) return null;
+    const firstChar = content[0];
+
+    if (firstChar === '<') {
+      if (cacheLastNumber === null) return null;
+      results.push(cacheLastNumber.toString());
+      continue;
     }
 
-    if (!results || results.length < 4) return null;
+    let num = parseInt(firstChar, 10);
+    if (isNaN(num)) return null;
+
+    for (let i = 1; i < content.length; i++) {
+      const op = content[i];
+      if (op === '+') {
+        num = (num + 1) % 10;
+      } else if (op === '-') {
+        num = (num + 9) % 10; // Clean way to handle negative wrap-around
+      } else {
+        return null; // Validation: Invalid character found in block
+      }
+    }
+
+    cacheLastNumber = num;
+    results.push(num.toString());
   }
-  return results;
+
+  const finalPin = results.join('');
+  return finalPin.length >= 4 ? finalPin : null;
 }
 export default decodeSantaPin;

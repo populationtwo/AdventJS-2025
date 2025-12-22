@@ -1,56 +1,35 @@
 function elfBattle(elf1: string, elf2: string): number {
-  const moves1 = elf1.split('');
-  const moves2 = elf2.split('');
+  type Move = 'A' | 'F' | 'B' | 'N'; // Attack, Fire, Block, None
 
-  // If move lengths differ, battle ends immediately
-  if (moves1.length !== moves2.length) return 0;
-
+  const DAMAGE_MATRIX: Record<Move, Record<Move, [number, number]>> = {
+    // Format: [Damage to Elf 1, Damage to Elf 2]
+    A: { A: [1, 1], F: [2, 1], B: [0, 0], N: [0, 1] },
+    F: { A: [0, 2], F: [2, 2], B: [0, 2], N: [0, 2] },
+    B: { A: [0, 0], F: [2, 0], B: [0, 0], N: [0, 0] },
+    N: { A: [1, 0], F: [2, 0], B: [0, 0], N: [0, 0] },
+  };
   let elf1Hp = 3;
   let elf2Hp = 3;
 
-  const applyDamage = (d1: number, d2: number) => {
+  const maxMoves = Math.max(elf1.length, elf2.length);
+
+  for (let i = 0; i < maxMoves; i++) {
+    // Fallback to 'N' (None) if one elf runs out of moves
+    const m1 = (elf1[i] || 'N') as Move;
+    const m2 = (elf2[i] || 'N') as Move;
+
+    const [d1, d2] = DAMAGE_MATRIX[m1][m2];
+
     elf1Hp -= d1;
     elf2Hp -= d2;
-  };
 
-  for (let i = 0; i < moves1.length; i++) {
-    const m1 = moves1[i];
-    const m2 = moves2[i];
-
-    // Attack vs Attack
-    if (m1 === 'A' && m2 === 'A') {
-      applyDamage(1, 1);
-    }
-
-    // Attack vs Fire
-    else if (m1 === 'A' && m2 === 'F') {
-      applyDamage(2, 1);
-    }
-
-    // Fire vs Attack
-    else if (m1 === 'F' && m2 === 'A') {
-      applyDamage(0, 2);
-    }
-
-    // Fire vs Fire
-    else if (m1 === 'F' && m2 === 'F') {
-      applyDamage(2, 2);
-    }
-
-    // Fire vs Block
-    else if (m1 === 'F' && m2 === 'B') {
-      applyDamage(0, 2);
-    }
-
-    // Attack vs Block → no damage
-
-    // Stop immediately if someone hits 0 or below
+    // Termination logic: stop as soon as someone is defeated
     if (elf1Hp <= 0 || elf2Hp <= 0) break;
   }
 
+  // Final outcome calculation
   if (elf1Hp > elf2Hp) return 1;
   if (elf2Hp > elf1Hp) return 2;
-  return 0;
+  return 0; // Covers draws and simultaneous KOs
 }
-
 export default elfBattle;

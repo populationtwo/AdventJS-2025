@@ -1,65 +1,42 @@
 function drawTree(height: number, ornament: string, frequency: number): string {
-  const leaves = '*';
+  const LEAF = '*';
+  const TRUNK = '#';
 
-  const createRow = (width: number, leafCount: number) => {
-    const row = new Array(width).fill(' ');
-    const start = Math.floor((width - leafCount) / 2);
-    for (let i = start; i < start + leafCount; i++) {
-      row[i] = leaves;
+  const buildRow = (rowId: number, totalHeight: number, leafCounter: number) => {
+    const padding = ' '.repeat(totalHeight - 1 - rowId);
+    const leafCount = 1 + 2 * rowId;
+
+    let currentRowLeaves = '';
+    let updatedCounter = leafCounter;
+
+    for (let i = 0; i < leafCount; i++) {
+      updatedCounter++;
+      const char = updatedCounter % frequency === 0 ? ornament : LEAF;
+      currentRowLeaves += char;
     }
-    return trimAfterLeaves(row);
-  };
-  const createTrunk = (width: number) => {
-    const row = new Array(width).fill(' ');
-    const start = Math.floor((width - 1) / 2);
-    for (let i = start; i < start + 1; i++) {
-      row[i] = '#';
-    }
 
-    return trimAfterHash(row);
+    return {
+      row: padding + currentRowLeaves,
+      nextCounter: updatedCounter,
+    };
   };
 
-  const trimAfterHash = (arr: string[]) => {
-    const hashIndex = arr.indexOf('#');
-    if (hashIndex === -1) return arr; // no "#" found, return original
-    return arr.slice(0, hashIndex + 1);
-  };
+  // State-based accumulation of rows
+  let currentGlobalCount = 0;
+  const treeRows: string[] = [];
 
-  const trimAfterLeaves = (arr: string[]) => {
-    const lastIndex = arr.reduce((last, item, idx) => {
-      return item !== ' ' ? idx : last;
-    }, -1);
+  // Build leaf sections
+  for (let i = 0; i < height; i++) {
+    const { row, nextCounter } = buildRow(i, height, currentGlobalCount);
+    treeRows.push(row);
+    currentGlobalCount = nextCounter;
+  }
 
-    return arr.slice(0, lastIndex + 1);
-  };
+  // Build trunk (no trimming needed, padding is explicit)
+  const trunkPadding = ' '.repeat(height - 1);
+  treeRows.push(trunkPadding + TRUNK);
 
-  // Add decorations every nth leaf, skipping the last row
-  const addDecoration = (rows: string[][], n: number, ornament: string) => {
-    let count = 0;
-    return rows.map((row, rowIndex) => {
-      if (rowIndex === rows.length - 1) return row; // skip trunk
-      return row.map((cell) => {
-        if (cell === leaves) {
-          count++;
-          return count % n === 0 ? ornament : leaves;
-        }
-        return cell;
-      });
-    });
-  };
-
-  // Build tree rows
-  const treeRows = Array.from({ length: height }, (_, i) => 1 + 2 * i);
-  const treeWidth = treeRows[treeRows.length - 1];
-
-  const treeImage = [
-    ...treeRows.map((size) => createRow(treeWidth, size)),
-    createTrunk(treeWidth), // trunk
-  ];
-
-  // Decorate and stringify
-  const decorated = addDecoration(treeImage, frequency, ornament);
-  return decorated.map((row) => row.join('')).join('\n');
+  return treeRows.join('\n');
 }
 
 export default drawTree;
