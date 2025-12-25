@@ -405,7 +405,7 @@ My solutions to [AdventJS](https://adventjs.dev/) 2025 challenges.
 <tr>
   <td>18</td>
   <td>
-    <strong🎄 Lights in line with diagonals></strong>
+    <strong>🎄 Lights in line with diagonals</strong>
   </td>
   <td>
     <a href="src/chapter-18/hasFourInARow.ts">
