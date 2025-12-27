@@ -201,7 +201,7 @@ My solutions to [AdventJS](https://adventjs.dev/) 2025 challenges.
 <tr>
   <td>09</td>
   <td>
-    <strong>  The reno robot aspirator</strong>
+    <strong>🦌 The reno robot aspirator</strong>
   </td>
   <td>
     <a href="src/chapter-09/moveReno.ts">
